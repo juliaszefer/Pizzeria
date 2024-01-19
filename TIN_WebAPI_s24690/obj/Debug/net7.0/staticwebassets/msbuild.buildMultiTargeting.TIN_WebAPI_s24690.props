@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/TIN_WebAPI_s24690.props" />
+</Project>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIN_s24690", "TIN_s24690\TIN_s24690.csproj", "{E155141B-E098-43A8-B801-54E4F8473E04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIN_WebAPI_s24690", "TIN_WebAPI_s24690\TIN_WebAPI_s24690.csproj", "{A6ADD339-9882-4C41-850C-B9697C139615}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E155141B-E098-43A8-B801-54E4F8473E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E155141B-E098-43A8-B801-54E4F8473E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E155141B-E098-43A8-B801-54E4F8473E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E155141B-E098-43A8-B801-54E4F8473E04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6ADD339-9882-4C41-850C-B9697C139615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6ADD339-9882-4C41-850C-B9697C139615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6ADD339-9882-4C41-850C-B9697C139615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6ADD339-9882-4C41-850C-B9697C139615}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
