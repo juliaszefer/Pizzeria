@@ -21,12 +21,12 @@ public class ZamowienieService : IZamowienieService
         return zamowienies;
     }
 
-    public async Task<IList<ZamowienieProduktDTO>> GetZamowienieNapojByIdAsync(int id)
+    public async Task<IList<ZamowienieProduktDto>> GetZamowienieNapojByIdAsync(int id)
     {
-        List<ZamowienieProduktDTO> napoje = await (from zamowienieNapoj in _context.ZamowienieNapojs
+        List<ZamowienieProduktDto> napoje = await (from zamowienieNapoj in _context.ZamowienieNapojs
             join napoj in _context.Napojs on zamowienieNapoj.IdNapoj equals napoj.IdNapoj
             where zamowienieNapoj.IdZamowienie == id
-            select new ZamowienieProduktDTO
+            select new ZamowienieProduktDto
             {
                 Nazwa = napoj.Nazwa,
                 Cena = napoj.Cena,
@@ -35,12 +35,12 @@ public class ZamowienieService : IZamowienieService
         return napoje;
     }
 
-    public async Task<IList<ZamowienieProduktDTO>> GetZamowienieDodatekByIdAsync(int id)
+    public async Task<IList<ZamowienieProduktDto>> GetZamowienieDodatekByIdAsync(int id)
     {
-        List<ZamowienieProduktDTO> dodatki = await (from zamowienieDodatek in _context.ZamowienieDodateks
+        List<ZamowienieProduktDto> dodatki = await (from zamowienieDodatek in _context.ZamowienieDodateks
             join dodatek in _context.Dodateks on zamowienieDodatek.IdDodatek equals dodatek.IdDodatek
             where zamowienieDodatek.IdZamowienie == id
-            select new ZamowienieProduktDTO
+            select new ZamowienieProduktDto
             {
                 Nazwa = dodatek.Nazwa,
                 Cena = dodatek.Cena,
@@ -49,12 +49,12 @@ public class ZamowienieService : IZamowienieService
         return dodatki;
     }
 
-    public async Task<IList<ZamowienieProduktDTO>> GetZamowieniePizzaByIdAsync(int id)
+    public async Task<IList<ZamowienieProduktDto>> GetZamowieniePizzaByIdAsync(int id)
     {
-        List<ZamowienieProduktDTO> pizze = await (from zamowieniePizza in _context.ZamowieniePizzas
+        List<ZamowienieProduktDto> pizze = await (from zamowieniePizza in _context.ZamowieniePizzas
             join pizza in _context.Pizzas on zamowieniePizza.IdPizza equals pizza.IdPizza
             where zamowieniePizza.IdZamowienie == id
-            select new ZamowienieProduktDTO
+            select new ZamowienieProduktDto
             {
                 Nazwa = pizza.Nazwa,
                 Cena = pizza.Cena,
