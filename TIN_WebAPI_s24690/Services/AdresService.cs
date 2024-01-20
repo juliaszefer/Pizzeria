@@ -13,9 +13,10 @@ public class AdresService : IAdresService
         _context = context;
     }
     
-    public async Task<Adres> GetAdresByIdAsync(int id)
+    public async Task<Adres?> GetAdresByIdAsync(int id)
     {
-        Adres getAdres = await (from adres in _context.Adres where adres.IdAdres == id select adres).FirstAsync();
+        var getAdres = await (from adres in _context.Adres 
+            where adres.IdAdres == id select adres).FirstOrDefaultAsync();
         return getAdres;
     }
 }

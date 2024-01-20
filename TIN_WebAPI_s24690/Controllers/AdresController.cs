@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using TIN_WebAPI_s24690.Data;
-using TIN_WebAPI_s24690.Models;
 using TIN_WebAPI_s24690.Services;
 
 namespace TIN_WebAPI_s24690.Controllers;
@@ -19,7 +17,11 @@ public class AdresController : Controller
     [HttpGet("{id}")]
     public async Task<IActionResult> GetAdresById(int id)
     {
-        Adres newAdres = await _adresService.GetAdresByIdAsync(id);
-        return Ok(newAdres);
+        var adres = await _adresService.GetAdresByIdAsync(id);
+        if (adres == null)
+        {
+            return NotFound("Adres nie został znaleziony.");
+        }
+        return Ok(adres);
     }
 }
