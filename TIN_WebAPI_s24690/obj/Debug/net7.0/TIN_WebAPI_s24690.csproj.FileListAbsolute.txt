@@ -41,3 +41,7 @@
 /Users/juliaszefer/RiderProjects/TIN_s24690/TIN_WebAPI_s24690/obj/Debug/net7.0/TIN_WebAPI_s24690.pdb
 /Users/juliaszefer/RiderProjects/TIN_s24690/TIN_WebAPI_s24690/obj/Debug/net7.0/TIN_WebAPI_s24690.genruntimeconfig.cache
 /Users/juliaszefer/RiderProjects/TIN_s24690/TIN_WebAPI_s24690/obj/Debug/net7.0/ref/TIN_WebAPI_s24690.dll
+/Users/juliaszefer/RiderProjects/TIN_s24690/TIN_WebAPI_s24690/bin/Debug/net7.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/juliaszefer/RiderProjects/TIN_s24690/TIN_WebAPI_s24690/bin/Debug/net7.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/juliaszefer/RiderProjects/TIN_s24690/TIN_WebAPI_s24690/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/juliaszefer/RiderProjects/TIN_s24690/TIN_WebAPI_s24690/bin/Debug/net7.0/Newtonsoft.Json.Bson.dll
