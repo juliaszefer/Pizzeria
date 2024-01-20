@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TIN_WebAPI_s24690.Models.DTO;
 using TIN_WebAPI_s24690.Services;
 
 namespace TIN_WebAPI_s24690.Controllers;
@@ -23,5 +24,12 @@ public class AdresController : Controller
             return NotFound("Adres nie został znaleziony.");
         }
         return Ok(adres);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddNewAdres([FromBody] AdresDto adresDto)
+    {
+        var id = await _adresService.AddNewAdressAsync(adresDto);
+        return Ok(id);
     }
 }
