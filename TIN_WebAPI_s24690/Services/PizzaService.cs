@@ -38,4 +38,44 @@ public class PizzaService : IPizzaService
         
         return pizzaDtos;
     }
+
+    public async Task<IList<PizzaDto>> GetPizzaTlumaczenieAsync()
+    {
+        var pizze = await (from pizza in _context.Pizzas
+            join pizzaEn in _context.PizzaTlumaczenies on pizza.IdPizza equals pizzaEn.IdPizza
+            where pizzaEn.IdJezyk == 2
+            select new Pizza
+            {
+                IdPizza = pizza.IdPizza,
+                Nazwa = pizzaEn.Tlumaczenie,
+                Cena = pizza.Cena
+            }).ToListAsync();
+        
+        List<PizzaDto> pizzaDtos = new List<PizzaDto>();
+
+        foreach (var pizza in pizze)
+        {
+            List<Skladnik> skladniks = await (from piza in _context.Pizzas
+                join pizaskladnik in _context.PizzaSkladniks on piza.IdPizza equals pizaskladnik.IdPizza
+                join skladnik in _context.Skladniks on pizaskladnik.IdSkladnik equals skladnik.IdSkladnik
+                join skladnikTlumaczenie in _context.SkladnikTlumaczenies on skladnik.IdSkladnik equals skladnikTlumaczenie.IdSkladnik
+                where piza.IdPizza == pizza.IdPizza && skladnikTlumaczenie.IdJezyk == 2
+                select new Skladnik
+                {
+                    IdSkladnik = skladnik.IdSkladnik,
+                    Nazwa = skladnikTlumaczenie.Tlumaczenie
+                }).ToListAsync();
+
+            PizzaDto pizzaDto = new PizzaDto
+            {
+                Nazwa = pizza.Nazwa,
+                Cena = pizza.Cena,
+                Skladniks = skladniks
+            };
+            
+            pizzaDtos.Add(pizzaDto);
+        }
+
+        return pizzaDtos;
+    }
 }

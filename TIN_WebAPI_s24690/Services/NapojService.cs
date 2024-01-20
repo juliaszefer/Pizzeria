@@ -17,4 +17,19 @@ public class NapojService : INapojService
         var napoje = await _context.Napojs.ToListAsync();
         return napoje;
     }
+
+    public async Task<IList<Napoj>> GetNapojeTlumaczenieAsync()
+    {
+        var napoje = await (from napoj in _context.Napojs
+            join napojEn in _context.NapojTlumaczenies on napoj.IdNapoj equals napojEn.IdNapoj
+            where napojEn.IdJezyk == 2
+            select new Napoj
+            {
+                IdNapoj = napoj.IdNapoj,
+                Nazwa = napojEn.Tlumaczenie,
+                Cena = napoj.Cena
+            }).ToListAsync();
+
+        return napoje;
+    }
 }

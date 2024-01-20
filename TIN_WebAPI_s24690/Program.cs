@@ -33,7 +33,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore
 );
 
-builder.WebHost.UseUrls("http://localhost:5000");
+// builder.WebHost.UseUrls("http://localhost:5000");
 
 builder.Services.AddCors(options =>
 {

@@ -17,4 +17,19 @@ public class DodatekService : IDodatekService
         var dodatki = await _context.Dodateks.ToListAsync();
         return dodatki;
     }
+
+    public async Task<IList<Dodatek>> GetDodatkiTlumaczenieAsync()
+    {
+        var dodatki = await (from dodatek in _context.Dodateks
+            join dodatekEn in _context.DodatekTlumaczenies on dodatek.IdDodatek equals dodatekEn.IdDodatek
+            where dodatekEn.IdJezyk == 2
+            select new Dodatek
+            {
+                IdDodatek = dodatek.IdDodatek,
+                Nazwa = dodatekEn.Tlumaczenie,
+                Cena = dodatek.Cena
+            }).ToListAsync();
+
+        return dodatki;
+    }
 }
