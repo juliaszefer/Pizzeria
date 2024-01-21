@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TIN_WebAPI_s24690.Models.DTO;
 using TIN_WebAPI_s24690.Services;
 
 namespace TIN_WebAPI_s24690.Controllers;
@@ -23,5 +24,16 @@ public class UzytkownikController : Controller
             return NotFound("Użytkownik nie został znaleziony.");
         }
         return Ok(uzytkownik);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddNewUzytkownik([FromBody] UzytkownikDto uzytkownikDto)
+    {
+        var id = await _uzytkownikService.AddNewUzytkownik(uzytkownikDto);
+        if (id == -1)
+        {
+            return BadRequest("Login już istnieje w bazie danych");
+        }
+        return Ok(id);
     }
 }
