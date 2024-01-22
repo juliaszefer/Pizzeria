@@ -6,4 +6,5 @@ public interface IPizzaService
 {
     public Task<IList<PizzaDto>> GetPizzaAsync();
     public Task<IList<PizzaDto>> GetPizzaTlumaczenieAsync();
+    public Task<int> AddNewPizzaAsync(NewItemDto newItemDto);
 }

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TIN_WebAPI_s24690.Models.DTO;
 using TIN_WebAPI_s24690.Services;
 
 namespace TIN_WebAPI_s24690.Controllers;
@@ -19,5 +20,12 @@ public class NapojController : Controller
     {
         var napoje = await _napojService.GetNapojeAsync();
         return Ok(napoje);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddNewNapoj(NewItemDto newItemDto)
+    {
+        var id = await _napojService.AddNewNapojAsync(newItemDto);
+        return Ok(id);
     }
 }

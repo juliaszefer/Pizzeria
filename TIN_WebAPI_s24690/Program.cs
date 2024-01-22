@@ -8,13 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddTransient<IZamowienieService, ZamowienieService>();
 builder.Services.AddTransient<IUzytkownikService, UzytkownikService>();
-builder.Services.AddTransient<IUprawnienieService, UprawnienieService>();
 builder.Services.AddTransient<ISkladnikService, SkladnikService>();
 builder.Services.AddTransient<IRolaService, RolaService>();
 builder.Services.AddTransient<IPizzaService, PizzaService>();
 builder.Services.AddTransient<IOsobaService, OsobaService>();
 builder.Services.AddTransient<INapojService, NapojService>();
-builder.Services.AddTransient<IJezykService, JezykService>();
 builder.Services.AddTransient<IDodatekService, DodatekService>();
 builder.Services.AddTransient<IAdresService, AdresService>();
 

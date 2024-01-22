@@ -62,4 +62,83 @@ public class ZamowienieService : IZamowienieService
             }).ToListAsync();
         return pizze;
     }
+
+    public async Task<int> AddNewZamowienieAsync(int idOsoba)
+    {
+        int id = await _context.Zamowienies.MaxAsync(e => e.IdZamowienie) + 1;
+
+        Zamowienie zamowienie = new Zamowienie
+        {
+            IdZamowienie = id,
+            IdOsoba = idOsoba,
+            DataZlozenia = DateTime.Now,
+            Status = "Przyjęte"
+        };
+
+        await _context.Zamowienies.AddAsync(zamowienie);
+        await _context.SaveChangesAsync();
+
+        return id;
+
+    }
+
+    public async Task<int> UpdateStatusZamowieniaAsync(int id, string status)
+    {
+        var zamowienie = await _context.Zamowienies.FindAsync(id);
+
+        if (zamowienie == null)
+        {
+            return -1;
+        }
+
+        zamowienie.Status = status;
+
+        await _context.SaveChangesAsync();
+        return zamowienie.IdZamowienie;
+    }
+
+    public async Task<int> AddNewZamowieniePizzaAsync(int idZamowienie, int idPizza, int ilosc)
+    {
+        ZamowieniePizza zamowieniePizza = new ZamowieniePizza
+        {
+            IdZamowienie = idZamowienie,
+            IdPizza = idPizza,
+            Ilosc = ilosc
+        };
+
+        await _context.ZamowieniePizzas.AddAsync(zamowieniePizza);
+        await _context.SaveChangesAsync();
+
+        return idZamowienie;
+    }
+
+    public async Task<int> AddNewZamowienieNapojAsync(int idZamowienie, int idNapoj, int ilosc)
+    {
+        ZamowienieNapoj zamowienieNapoj = new ZamowienieNapoj
+        {
+            IdZamowienie = idZamowienie,
+            IdNapoj = idNapoj,
+            Ilosc = ilosc
+        };
+
+        await _context.ZamowienieNapojs.AddAsync(zamowienieNapoj);
+        await _context.SaveChangesAsync();
+
+        return idZamowienie;
+    }
+
+    public async Task<int> AddNewZamowienieDodatekAsync(int idZamowienie, int idDodatek, int ilosc)
+    {
+        ZamowienieDodatek zamowienieDodatek = new ZamowienieDodatek
+        {
+            IdZamowienie = idZamowienie,
+            IdDodatek = idDodatek,
+            Ilosc = ilosc
+        };
+
+        await _context.ZamowienieDodateks.AddAsync(zamowienieDodatek);
+        await _context.SaveChangesAsync();
+
+        return idZamowienie;
+    }
 }

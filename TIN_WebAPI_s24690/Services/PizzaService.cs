@@ -78,4 +78,30 @@ public class PizzaService : IPizzaService
 
         return pizzaDtos;
     }
+
+    public async Task<int> AddNewPizzaAsync(NewItemDto newItemDto)
+    {
+        int id = await _context.Pizzas.MaxAsync(e => e.IdPizza) + 1;
+
+        Pizza pizza = new Pizza
+        {
+            IdPizza = id,
+            Nazwa = newItemDto.Nazwa,
+            Cena = newItemDto.Cena
+        };
+
+        PizzaTlumaczenie pizzaTlumaczenie = new PizzaTlumaczenie
+        {
+            IdJezyk = 2,
+            IdPizza = id,
+            Tlumaczenie = newItemDto.Tlumaczenie
+        };
+
+        await _context.Pizzas.AddAsync(pizza);
+        await _context.PizzaTlumaczenies.AddAsync(pizzaTlumaczenie);
+
+        await _context.SaveChangesAsync();
+
+        return id;
+    }
 }

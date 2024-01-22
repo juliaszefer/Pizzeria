@@ -90,7 +90,7 @@ public class OsobaService : IOsobaService
 
         await _context.SaveChangesAsync();
 
-        return id;
+        return osoba.IdOsoba;
     }
 
     private bool DoesEmailExist(string email)

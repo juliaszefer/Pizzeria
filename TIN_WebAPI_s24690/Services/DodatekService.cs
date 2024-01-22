@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TIN_WebAPI_s24690.Data;
 using TIN_WebAPI_s24690.Models;
+using TIN_WebAPI_s24690.Models.DTO;
 
 namespace TIN_WebAPI_s24690.Services;
 
@@ -31,5 +32,31 @@ public class DodatekService : IDodatekService
             }).ToListAsync();
 
         return dodatki;
+    }
+
+    public async Task<int> AddNewDodatekAsync(NewItemDto newItemDto)
+    {
+        int id = await _context.Dodateks.MaxAsync(e => e.IdDodatek) + 1;
+
+        Dodatek dodatek = new Dodatek
+        {
+            IdDodatek = id,
+            Nazwa = newItemDto.Nazwa,
+            Cena = newItemDto.Cena
+        };
+
+        DodatekTlumaczenie dodatekTlumaczenie = new DodatekTlumaczenie
+        {
+            IdDodatek = id,
+            IdJezyk = 2,
+            Tlumaczenie = newItemDto.Tlumaczenie
+        };
+
+        await _context.Dodateks.AddAsync(dodatek);
+        await _context.DodatekTlumaczenies.AddAsync(dodatekTlumaczenie);
+
+        await _context.SaveChangesAsync();
+
+        return id;
     }
 }
