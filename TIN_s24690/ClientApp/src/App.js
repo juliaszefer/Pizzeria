@@ -1,22 +1,14 @@
-import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
+import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import './custom.css';
+import Home from "./components/Home";
 
-export default class App extends Component {
-  static displayName = App.name;
-
-  render() {
+export default function App(){
     return (
-      <Layout>
+      <BrowserRouter>
         <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
+          <Route path={"/"} element={<Home/>}/>
         </Routes>
-      </Layout>
+      </BrowserRouter>
     );
-  }
 }

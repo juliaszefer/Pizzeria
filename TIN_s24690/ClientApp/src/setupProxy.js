@@ -1,11 +1,21 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const { env } = require('process');
 
-const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
-  env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'http://localhost:25848';
+const target = 'http://localhost:5203';
 
 const context = [
-  "/weatherforecast",
+  "/Adres",
+  "/Dodatek",
+  "/DodatekTlumaczenie",
+  "/Napoj",
+  "/NapojTlumaczenie",
+  "/Osoba",
+  "/Pizza",
+  "/PizzaTlumaczenie",
+  "/Rola",
+  "/Skladnik",
+  "/Uzytkownik",
+  "/Zamowienie"  
 ];
 
 const onError = (err, req, resp, target) => {
