@@ -6,12 +6,25 @@ header{
     justify-content: right;
 }
 
-header button{
+.headerButton{
+    height: 100%;
+    width: 100%;
+    background: none;
+    color: rgb(230, 230, 230);
+    border: none;
+}
+
+.headerButtonAfter{
     height: 100%;
     width: 10%;
     background: none;
     color: rgb(230, 230, 230);
     border: none;
+}
+
+.headerLink{
+    height: 100%;
+    width: 10%;
 }
 
 header button:hover{
@@ -37,5 +50,98 @@ header button:hover{
     height: 80%;
     width: 85%;
     background: rgba(0, 0, 0, 0.5);
+}
 
+.productName{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+.productName button{
+    border: none;
+    background: none;
+    color: rgb(230, 230, 230);
+    width: 30%;
+    height: 100%;
+}
+
+.productName button:hover{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.productList{
+    height: 85%;
+    width: 100%;
+}
+
+.food{
+    height: 100%;
+    color: rgb(230, 230, 230);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrap_pizza{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pizza-container{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 30px;
+}
+
+.pizza-container:hover{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination button{
+    border: none;
+    background: none;
+    color: rgb(230, 230, 230);
+    font-size: 20px;
+    width: 30px;
+}
+.pagination button:hover{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.addToBasket{
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: rgb(230, 230, 230);
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.addToBasket:hover{
+    background: rgba(0, 0, 0, 1);
+}
+
+.food p{
+    font-size: 30px;
+    text-align: center;
+}
+
+.total-sum{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.total-sum button{
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: rgb(230, 230, 230);
 }

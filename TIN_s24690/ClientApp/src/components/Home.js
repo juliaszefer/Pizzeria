@@ -1,25 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../css/Home.css'
+import Menu from "./Menu";
+import NavBar from "./NavBar";
 
-export default function Home(){
-
+export default function Home({basket, setBasket, english, setEnglish}){
+    
     return (
       <div className={"homeContainer"}>
-        <header>
-            <button>MENU</button>
-            <button>ZALOGUJ</button>
-            <button>KOSZYK</button>
-            <button>EN</button>
-        </header>
+        <NavBar english={english} setEnglish={setEnglish}/>
         <div className={"menuContainer"}>
-            <div className={"menuBox"}>
-                <div className={"productName"}>
-
-                </div>
-                <div className={"productList"}>
-
-                </div>
-            </div>
+            <Menu english={english} basket={basket} setBasket={setBasket}/>
         </div>  
       </div>
     );
