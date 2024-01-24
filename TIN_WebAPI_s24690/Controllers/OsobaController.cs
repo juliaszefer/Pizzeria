@@ -15,7 +15,7 @@ public class OsobaController : Controller
         _osobaService = osobaService;
     }
     
-    [HttpGet("{id}")]
+    [HttpGet("idUzytkownik/{id}")]
     public async Task<IActionResult> GetOsobaById(int id)
     {
         var osoba = await _osobaService.GetOsobaByIdAsync(id);
@@ -26,10 +26,22 @@ public class OsobaController : Controller
         return Ok(osoba);
     }
 
-    [HttpPost("NewOsoba")]
-    public async Task<IActionResult> AddNewOsoba([FromBody] OsobaDto osobaDto, int idAdres)
+    [HttpGet("{email}")]
+    public async Task<IActionResult> GetOsobaByEmail(string email)
     {
-        var id = await _osobaService.AddNewOsoba(osobaDto, idAdres);
+        var osoba = await _osobaService.GetOsobaByEmailAsync(email);
+        if (osoba == null)
+        {
+            return NotFound("Osoba nie została znaleziona.");
+        }
+
+        return Ok(osoba);
+    }
+
+    [HttpPost("NewOsoba")]
+    public async Task<IActionResult> AddNewOsoba([FromBody] OsobaDto osobaDto)
+    {
+        var id = await _osobaService.AddNewOsoba(osobaDto);
         if (id == -1)
         {
             return BadRequest("Podany e-mail jest już wykorzystywany w bazie danych");
@@ -39,9 +51,9 @@ public class OsobaController : Controller
     }
     
     [HttpPost("NewOsobaUzytkownik")]
-    public async Task<IActionResult> AddNewOsobaUzytkownik([FromBody] OsobaDto osobaDto, int idAdres, int idUzytkownik)
+    public async Task<IActionResult> AddNewOsobaUzytkownik([FromBody] OsobaDto osobaDto)
     {
-        var id = await _osobaService.AddNewOsobaUzytkownik(osobaDto, idAdres, idUzytkownik);
+        var id = await _osobaService.AddNewOsobaUzytkownik(osobaDto);
         if (id == -1)
         {
             return BadRequest("Podany e-mail jest już wykorzystywany w bazie danych");

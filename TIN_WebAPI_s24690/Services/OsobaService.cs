@@ -21,7 +21,14 @@ public class OsobaService : IOsobaService
         return getOsoba;
     }
 
-    public async Task<int> AddNewOsoba(OsobaDto osobaDto, int idAdres)
+    public async Task<Osoba?> GetOsobaByEmailAsync(string email)
+    {
+        var getOsoba = await (from osoba in _context.Osobas 
+            where osoba.Email == email select osoba).FirstOrDefaultAsync();
+        return getOsoba;
+    }
+
+    public async Task<int> AddNewOsoba(OsobaDto osobaDto)
     {
         int id = await _context.Osobas.MaxAsync(e => e.IdOsoba) + 1;
 
@@ -37,7 +44,7 @@ public class OsobaService : IOsobaService
             Nazwisko = osobaDto.Nazwisko,
             NrTelefonu = osobaDto.NrTelefonu,
             Email = osobaDto.Email,
-            IdAdres = idAdres,
+            IdAdres = osobaDto.IdAdres,
             IdRola = 3,
             IdUzytkownik = null
         };
@@ -49,7 +56,7 @@ public class OsobaService : IOsobaService
 
     }
 
-    public async Task<int> AddNewOsobaUzytkownik(OsobaDto osobaDto, int idAdres, int idUzytkownik)
+    public async Task<int> AddNewOsobaUzytkownik(OsobaDto osobaDto)
     {
         int id = await _context.Osobas.MaxAsync(e => e.IdOsoba) + 1;
 
@@ -65,9 +72,9 @@ public class OsobaService : IOsobaService
             Nazwisko = osobaDto.Nazwisko,
             NrTelefonu = osobaDto.NrTelefonu,
             Email = osobaDto.Email,
-            IdAdres = idAdres,
+            IdAdres = osobaDto.IdAdres,
             IdRola = 2,
-            IdUzytkownik = idUzytkownik
+            IdUzytkownik = null
         };
 
         await _context.Osobas.AddAsync(osoba);

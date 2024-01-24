@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 
-export default function NavBar({english, setEnglish}){
+export default function NavBar({english, setEnglish, user, setUser}){
     const [zaloguj, setZaloguj] = useState("ZALOGUJ");
     const [koszyk, setKoszyk] = useState("KOSZYK")
     const [jezyk, setJezyk] = useState("EN");

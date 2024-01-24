@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import NavBar from "./NavBar";
 import {Link} from "react-router-dom";
 
-export default function Basket({basket, setBasket, english, setEnglish}){
+export default function Basket({basket, setBasket, english, setEnglish, user, setUser, setIdAdres}){
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(3);
     const [emptyBasket, setEmptyBasket] = useState(false);

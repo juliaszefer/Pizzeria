@@ -6,7 +6,8 @@ namespace TIN_WebAPI_s24690.Services;
 public interface IOsobaService
 {
     public Task<Osoba?> GetOsobaByIdAsync(int id);
-    public Task<int> AddNewOsoba(OsobaDto osobaDto, int idAdres);
-    public Task<int> AddNewOsobaUzytkownik(OsobaDto osobaDto, int idAdres, int idUzytkownik);
+    public Task<Osoba?> GetOsobaByEmailAsync(string email);
+    public Task<int> AddNewOsoba(OsobaDto osobaDto);
+    public Task<int> AddNewOsobaUzytkownik(OsobaDto osobaDto);
     public Task<int> UpdateOsobaToUzytkownik(int id);
 }

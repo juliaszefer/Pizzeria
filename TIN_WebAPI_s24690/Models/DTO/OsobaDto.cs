@@ -8,9 +8,6 @@ public class OsobaDto
 
     public string NrTelefonu { get; set; } = null!;
 
-    public int IdAdres { get; set; }
-
     public string Email { get; set; } = null!;
-    
-    public int IdRola { get; set; }
+    public int IdAdres { get; set; }
 }

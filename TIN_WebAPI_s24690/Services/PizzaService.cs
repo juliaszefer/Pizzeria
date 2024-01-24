@@ -28,6 +28,7 @@ public class PizzaService : IPizzaService
 
             PizzaDto pizzaDto = new PizzaDto
             {
+                IdPizza = pizza.IdPizza,
                 Nazwa = pizza.Nazwa,
                 Cena = pizza.Cena,
                 Skladniks = skladniks
@@ -68,6 +69,7 @@ public class PizzaService : IPizzaService
 
             PizzaDto pizzaDto = new PizzaDto
             {
+                IdPizza = pizza.IdPizza,
                 Nazwa = pizza.Nazwa,
                 Cena = pizza.Cena,
                 Skladniks = skladniks

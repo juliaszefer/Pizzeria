@@ -4,7 +4,5 @@ public class UzytkownikDto
 {
     public string Login { get; set; } = null!;
 
-    public DateOnly DataUtworzeniaKonta { get; set; }
-
     public string HasloHash { get; set; } = null!;
 }
