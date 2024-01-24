@@ -134,10 +134,10 @@ export default function AddPizza({english}){
     }
 
     return (
-        <div>
+        <div className={"fixPizza"}>
             {showAddPizza && (
                 <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className={"fixLabel"}>
                         <label>{nazwa}:</label>
                         <input
                             type="text"
@@ -146,8 +146,8 @@ export default function AddPizza({english}){
                             onChange={handleInputChange}
                         />
                     </div>
-                    <div>
-                        <label>{cena}:</label>
+                    <div className={"fixLabel"}>
+                        <label>{cena}: </label>
                         <input
                             type="number"
                             name="cena"
@@ -155,8 +155,8 @@ export default function AddPizza({english}){
                             onChange={handleInputChange}
                         />
                     </div>
-                    <div>
-                        <label>{tlumaczenie}:</label>
+                    <div className={"fixLabel"}>
+                        <label>{tlumaczenie}: </label>
                         <input
                             type="text"
                             name="tlumaczenie"
@@ -186,7 +186,7 @@ export default function AddPizza({english}){
             {showAddSkladnik && (
                 <form onSubmit={handleSubmitSkladnik}>
                     <div>
-                        <label>{nazwaSklad}:</label>
+                        <label>{nazwaSklad}: </label>
                         <input
                             type="text"
                             name="nazwa"
@@ -195,7 +195,7 @@ export default function AddPizza({english}){
                         />
                     </div>
                     <div>
-                        <label>{tlumaczenie}:</label>
+                        <label>{tlumaczenie}: </label>
                         <input
                             type="text"
                             name="tlumaczenie"

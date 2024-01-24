@@ -53,22 +53,24 @@ export default function Manage({english, setEnglish, user, setUser}){
             <NavBar user={user} setUser={setUser} setEnglish={setEnglish} english={english}/>
             <div className={"menuContainer"}>
                 <div className={"menuBox"}>
-                    {showButtons && (
-                        <div>
-                            <button onClick={handleClickPizza}>{pizz}</button>
-                            <button onClick={handleClickNapoj}>{nap}</button>
-                            <button onClick={handleClickDodatek}>{dod}</button>
-                        </div>
-                    )}
-                    {showAddPizza && (
-                        <AddPizza english={english}/>
-                    )}
-                    {showAddNapoj && (
-                        <AddDrink english={english}/>
-                    )}
-                    {showAddDodatek && (
-                        <AddSides english={english}/>
-                    )}
+                    <div className={"manageDivs"}>
+                        {showButtons && (
+                            <div className={"placeButton"}>
+                                <button onClick={handleClickPizza}>{pizz}</button>
+                                <button onClick={handleClickNapoj}>{nap}</button>
+                                <button onClick={handleClickDodatek}>{dod}</button>
+                            </div>
+                        )}
+                        {showAddPizza && (
+                            <AddPizza english={english}/>
+                        )}
+                        {showAddNapoj && (
+                            <AddDrink english={english}/>
+                        )}
+                        {showAddDodatek && (
+                            <AddSides english={english}/>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

@@ -48,7 +48,7 @@ export default function AddDrink({english}){
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
+            <div className={"fixLabel"}>
                 <label>{nazwa}:</label>
                 <input
                     type="text"
@@ -57,7 +57,7 @@ export default function AddDrink({english}){
                     onChange={handleInputChange}
                 />
             </div>
-            <div>
+            <div className={"fixLabel"}>
                 <label>{cena}:</label>
                 <input
                     type="number"
@@ -66,7 +66,7 @@ export default function AddDrink({english}){
                     onChange={handleInputChange}
                 />
             </div>
-            <div>
+            <div className={"fixLabel"}>
                 <label>{tlumaczenie}:</label>
                 <input
                     type="text"
