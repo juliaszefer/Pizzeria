@@ -23,7 +23,7 @@ public class DodatekController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddNewDodatek(NewItemDto newItemDto)
+    public async Task<IActionResult> AddNewDodatek([FromBody] NewItemDto newItemDto)
     {
         var id = await _dodatekService.AddNewDodatekAsync(newItemDto);
         return Ok(id);

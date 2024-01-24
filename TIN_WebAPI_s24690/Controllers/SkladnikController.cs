@@ -23,7 +23,7 @@ public class SkladnikController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddNewSkladnik(SkladnikDto skladnikDto)
+    public async Task<IActionResult> AddNewSkladnik([FromBody] SkladnikDto skladnikDto)
     {
         var id = await _skladnikService.AddNewSkladnikAsync(skladnikDto);
         return Ok(id);

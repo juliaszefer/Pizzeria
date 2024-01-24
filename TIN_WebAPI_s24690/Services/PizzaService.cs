@@ -106,4 +106,21 @@ public class PizzaService : IPizzaService
 
         return id;
     }
+
+    public async Task<int> AddPizzaSkladnikAsync(PizzaSkladnikDto pizzaSkladnikDto)
+    {
+        int id = await _context.PizzaSkladniks.MaxAsync(e => e.IdPizzaSkladnik) + 1;
+
+        PizzaSkladnik pizzaSkladnik = new PizzaSkladnik
+        {
+            IdPizzaSkladnik = id,
+            IdPizza = pizzaSkladnikDto.IdPizza,
+            IdSkladnik = pizzaSkladnikDto.IdSkladnik
+        };
+
+        await _context.PizzaSkladniks.AddAsync(pizzaSkladnik);
+        await _context.SaveChangesAsync();
+
+        return id;
+    }
 }

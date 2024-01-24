@@ -23,7 +23,7 @@ public class NapojController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddNewNapoj(NewItemDto newItemDto)
+    public async Task<IActionResult> AddNewNapoj([FromBody] NewItemDto newItemDto)
     {
         var id = await _napojService.AddNewNapojAsync(newItemDto);
         return Ok(id);

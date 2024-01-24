@@ -23,9 +23,16 @@ public class PizzaController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddNewPizza(NewItemDto newItemDto)
+    public async Task<IActionResult> AddNewPizza([FromBody] NewItemDto newItemDto)
     {
         var id = await _pizzaService.AddNewPizzaAsync(newItemDto);
+        return Ok(id);
+    }
+
+    [HttpPost("PizzaSkladnik")]
+    public async Task<IActionResult> AddNewPizzaSkladnik([FromBody] PizzaSkladnikDto pizzaSkladnikDto)
+    {
+        var id = await _pizzaService.AddPizzaSkladnikAsync(pizzaSkladnikDto);
         return Ok(id);
     }
 }

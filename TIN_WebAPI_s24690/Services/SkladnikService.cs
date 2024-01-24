@@ -31,6 +31,7 @@ public class SkladnikService : ISkladnikService
 
         SkladnikTlumaczenie skladnikTlumaczenie = new SkladnikTlumaczenie
         {
+            IdJezyk = 2,
             IdSkladnik = id,
             Tlumaczenie = skladnikDto.Tlumaczenie
         };

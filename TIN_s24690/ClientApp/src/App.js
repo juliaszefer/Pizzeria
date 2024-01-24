@@ -22,7 +22,7 @@ export default function App(){
           <Route path={"/LogIn"} element={<LogInNavBar english={english} setEnglish={setEnglish} basket={basket} setBasket={setBasket} idAdres={idAdres} setIdAdres={setIdAdres} user={user} setUser={setUser}/>}/>  
           <Route path={"/Order"} element={<Order basket={basket} setBasket={setBasket} english={english} setEnglish={setEnglish} setIdAdres={setIdAdres} idAdres={idAdres} user={user} setUser={setUser}/>}/>
           <Route path={"/OrderHistory"} element={<OrderHistory user={user} setUser={setUser} english={english} setEnglish={setEnglish}/>}/>
-          <Route path={"/Manage"} element={<Manage/>}/>  
+          <Route path={"/Manage"} element={<Manage setEnglish={setEnglish} user={user} setUser={setUser} english={english}/>}/>  
           <Route path={"/LogOut"} element={<LogOut user={user} setUser={setUser} english={english}/>}/>  
         </Routes>
       </BrowserRouter>
