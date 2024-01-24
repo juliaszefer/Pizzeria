@@ -2,8 +2,9 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import OrderDone from "./OrderDone";
 import Register from "./Register";
+import NavBar from "./NavBar";
 
-export default function LogIn({english, basket, setBasket, idAdres, user, setUser}) {
+export default function LogIn({setEnglish, english, basket, setBasket, idAdres, user, setUser}) {
 
     const [log, setLog] = useState("ZALOGUJ SIĘ");
     const [reg, setReg] = useState("ZAREJESTRUJ SIĘ");
@@ -96,9 +97,9 @@ export default function LogIn({english, basket, setBasket, idAdres, user, setUse
     }, [user]);
 
     return (
-        <div>
+        <div className={"logjedzeniee"}>
             {showLog && (
-                <div>
+                <div className={"opakowanie"}>
                     {userLogged && (
                         <form onSubmit={handleSubmit}>
                             <input

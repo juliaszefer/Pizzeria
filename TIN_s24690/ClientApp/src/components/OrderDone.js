@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderDone({english, basket, setBasket, user, setUser, idOsoba}) {
+    const navigate = useNavigate();
     const [pizza, setPizza] = useState([]);
     const [napoje, setNapoje] = useState([]);
     const [dodatki, setDodatki] = useState([]);
@@ -151,6 +153,7 @@ export default function OrderDone({english, basket, setBasket, user, setUser, id
         
         try {
             const response = await axios.post(`/Zamowienie/Zamowienie?idOsoba=${idOsoba}`);
+            console.log(response.data)
             setIdZamowienie(response.data);
             console.log("ID:" + idZamowienie);
             console.log(response);
@@ -210,13 +213,13 @@ export default function OrderDone({english, basket, setBasket, user, setUser, id
         } catch (error) {
             console.error('Wystąpił błąd podczas wysyłania danych', error);
         }
-        
+        navigate("/");
     }
 
     return (
-        <div>
+        <div className={"wysoko"}>
             <p>{text}</p>
-            <button onClick={handleZamowienie}><Link to={"/"}>OK</Link></button>
+            <button onClick={handleZamowienie}>OK</button>
         </div>
     )
 }

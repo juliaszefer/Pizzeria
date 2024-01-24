@@ -65,48 +65,50 @@ export default function Order({basket, setBasket, english, setEnglish, setIdAdre
             <div className={"menuContainer"}>
                 <div className={"menuBox"}>
                     <div className={"food"}>
-                        {showOrder && (<form onSubmit={handleSubmit}>
-                            <input
-                                type="text"
-                                name="kraj"
-                                value={formData.kraj}
-                                onChange={handleInputChange}
-                                placeholder={kraj}
-                            />
-                            <input
-                                type="text"
-                                name="miasto"
-                                value={formData.miasto}
-                                onChange={handleInputChange}
-                                placeholder={miasto}
-                            />
-                            <input
-                                type="text"
-                                name="ulica"
-                                value={formData.ulica}
-                                onChange={handleInputChange}
-                                placeholder={ulica}
-                            />
-                            <input
-                                type="number"
-                                name="nrUlicy"
-                                value={formData.nrUlicy}
-                                onChange={handleInputChange}
-                                placeholder={nrUlicy}
-                            />
-                            <input
-                                type="number"
-                                name="nrMieszkania"
-                                value={formData.nrMieszkania}
-                                onChange={handleInputChange}
-                                placeholder={nrMieszkania}
-                            />
-                            <button type="submit">{wyslij}</button>
-                        </form>
-                        )}
-                        {!showOrder && (
-                            <OrderOsoba english={english} basket={basket} setBasket={setBasket} idAdres={idAdres} user={user} setUser={setUser}/>
-                        )}
+                        <div className={"logjedzenie"}>
+                            {showOrder && (<form onSubmit={handleSubmit}>
+                                    <input
+                                        type="text"
+                                        name="kraj"
+                                        value={formData.kraj}
+                                        onChange={handleInputChange}
+                                        placeholder={kraj}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="miasto"
+                                        value={formData.miasto}
+                                        onChange={handleInputChange}
+                                        placeholder={miasto}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="ulica"
+                                        value={formData.ulica}
+                                        onChange={handleInputChange}
+                                        placeholder={ulica}
+                                    />
+                                    <input
+                                        type="number"
+                                        name="nrUlicy"
+                                        value={formData.nrUlicy}
+                                        onChange={handleInputChange}
+                                        placeholder={nrUlicy}
+                                    />
+                                    <input
+                                        type="number"
+                                        name="nrMieszkania"
+                                        value={formData.nrMieszkania}
+                                        onChange={handleInputChange}
+                                        placeholder={nrMieszkania}
+                                    />
+                                    <button type="submit">{wyslij}</button>
+                                </form>
+                            )}
+                            {!showOrder && (
+                                <OrderOsoba setEnglish={setEnglish} english={english} basket={basket} setBasket={setBasket} idAdres={idAdres} user={user} setUser={setUser}/>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

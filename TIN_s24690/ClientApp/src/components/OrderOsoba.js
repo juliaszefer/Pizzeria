@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import LogIn from "./LogIn";
 import Guest from "./Guest";
 
-export default function OrderOsoba({english, basket, setBasket, idAdres, user, setUser}){
+export default function OrderOsoba({setEnglish, english, basket, setBasket, idAdres, user, setUser}){
     const [showOrderOsoba, setShowOrderOsoba] = useState(true);
     const [zaloguj, setZaloguj] = useState("ZALOGUJ SIĘ");
     const [gosc, setGosc] = useState("KONTYNUUJ JAKO GOŚĆ")
@@ -29,15 +29,15 @@ export default function OrderOsoba({english, basket, setBasket, idAdres, user, s
     }
     
     return (
-        <div>
+        <div className={"decyzja"}>
             {showOrderOsoba && (
-                <div>
+                <div className={"szeroko"}>
                     <button onClick={handleClickZaloguj}>{zaloguj}</button>
                     <button onClick={handleClickGosc}>{gosc}</button>
                 </div>
             )}
             {log && (
-                <LogIn english={english} basket={basket} setBasket={setBasket} idAdres={idAdres} user={user} setUser={setUser}/>
+                <LogIn setEnglish={setEnglish} english={english} basket={basket} setBasket={setBasket} idAdres={idAdres} user={user} setUser={setUser}/>
             )}
             {gos && (
                 <Guest english={english} basket={basket} setBasket={setBasket} idAdres={idAdres} user={user} setUser={setUser}/>

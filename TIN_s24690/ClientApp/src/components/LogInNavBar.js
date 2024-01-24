@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import OrderDone from "./OrderDone";
-import Register from "./Register";
-import Order from "./Order";
 import {Link} from "react-router-dom";
 import AdresNavBar from "./AdresNavBar";
+import NavBar from "./NavBar";
 
 export default function LogInNavBar({english, setEnglish, basket, setBasket, user, setUser, idAdres, setIdAdres}){
     const [log, setLog] = useState("ZALOGUJ SIĘ");
@@ -98,39 +96,46 @@ export default function LogInNavBar({english, setEnglish, basket, setBasket, use
     }, [user]);
 
     return (
-        <div>
-            {showLog && (
-                <div>
-                    {userLogged && (
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                type="text"
-                                name="login"
-                                value={loginData.login}
-                                onChange={handleInputChange}
-                                placeholder="Login"
-                            />
-                            <input
-                                type="password"
-                                name="haslo"
-                                value={loginData.haslo}
-                                onChange={handleInputChange}
-                                placeholder={has}
-                            />
-                            <button type="submit">{log}</button>
-                            {errorMessage && <p>{errorMessage}</p>}
-                        </form>
-                    )}
-                    {user && <div>
-                        <p>{git}{user.login}</p>
-                        <button onClick={handleOnClickOK}><Link to={"/"}>OK</Link></button>
-                    </div>}
-                    <button onClick={handleOnLickRegister}>{reg}</button>
+        <div className={"homeContainer"}>
+            <NavBar user={user} setUser={setUser} english={english} setEnglish={setEnglish}/>
+            <div className={"menuContainer"}>
+                <div className={"menuBox"}>
+                    <div className={"wrapLogNav"}>
+                        {showLog && (
+                            <div className={"wrapp"}>
+                                {userLogged && (
+                                    <form onSubmit={handleSubmit}>
+                                        <input
+                                            type="text"
+                                            name="login"
+                                            value={loginData.login}
+                                            onChange={handleInputChange}
+                                            placeholder="Login"
+                                        />
+                                        <input
+                                            type="password"
+                                            name="haslo"
+                                            value={loginData.haslo}
+                                            onChange={handleInputChange}
+                                            placeholder={has}
+                                        />
+                                        <button type="submit">{log}</button>
+                                        {errorMessage && <p>{errorMessage}</p>}
+                                    </form>
+                                )}
+                                {user && <div className={"git"}>
+                                    <p>{git}{user.login}</p>
+                                    <button onClick={handleOnClickOK}><Link to={"/"}>OK</Link></button>
+                                </div>}
+                                <button onClick={handleOnLickRegister}>{reg}</button>
+                            </div>
+                        )}
+                        {regShow && (
+                            <AdresNavBar setIdAdres={setIdAdres} english={english} idAdres={idAdres} user={user} setUser={setUser} basket={basket} setBasket={setBasket} setEnglish={setEnglish}/>
+                        )}
+                    </div>
                 </div>
-            )}
-            {regShow && (
-                <AdresNavBar setIdAdres={setIdAdres} english={english} idAdres={idAdres} user={user} setUser={setUser} basket={basket} setBasket={setBasket} setEnglish={setEnglish}/>
-            )}
+            </div>
         </div>
     );
 }

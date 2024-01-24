@@ -23,7 +23,7 @@ export default function App(){
           <Route path={"/Order"} element={<Order basket={basket} setBasket={setBasket} english={english} setEnglish={setEnglish} setIdAdres={setIdAdres} idAdres={idAdres} user={user} setUser={setUser}/>}/>
           <Route path={"/OrderHistory"} element={<OrderHistory user={user} setUser={setUser} english={english} setEnglish={setEnglish}/>}/>
           <Route path={"/Manage"} element={<Manage setEnglish={setEnglish} user={user} setUser={setUser} english={english}/>}/>  
-          <Route path={"/LogOut"} element={<LogOut user={user} setUser={setUser} english={english}/>}/>  
+          <Route path={"/LogOut"} element={<LogOut user={user} setUser={setUser} english={english} setEnglish={setEnglish}/>}/>  
         </Routes>
       </BrowserRouter>
     );

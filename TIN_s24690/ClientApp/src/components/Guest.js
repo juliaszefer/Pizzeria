@@ -68,7 +68,7 @@ export default function Guest({english, basket, setBasket, idAdres, user, setUse
     };
 
     return (
-        <div>
+        <div className={"wysoko"}>
             {showGuest && (
                 <form onSubmit={handleSubmit}>
                     <input
