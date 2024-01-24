@@ -145,3 +145,33 @@ header button:hover{
     background: rgba(0, 0, 0, 0.5);
     color: rgb(230, 230, 230);
 }
+
+.history{
+    color: rgb(230, 230, 230);
+    height: 100%;
+}
+.wrap{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrap button{
+    border: none;
+    background: none;
+    color: rgb(230, 230, 230);
+}
+
+.wrap button:hover{
+    background: rgba(0, 0, 0, 0.5);
+}
+.zamowienie-info:hover{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
