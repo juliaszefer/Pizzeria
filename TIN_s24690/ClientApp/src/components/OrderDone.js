@@ -23,6 +23,7 @@ export default function OrderDone({english, basket, setBasket, user, setUser, id
     const [text, setText] = useState('Zamówienie przyjęte do realizacji');
 
     useEffect(() => {
+        console.log(basket)
         if (english) {
             setText("Your order has been accepted for processing");
         } else {
@@ -31,6 +32,7 @@ export default function OrderDone({english, basket, setBasket, user, setUser, id
     })
 
     useEffect(() => {
+        console.log(basket);
         axios.get('/Pizza')
             .then(response => {
                 setPizza(response.data);

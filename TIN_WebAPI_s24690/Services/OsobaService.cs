@@ -83,16 +83,16 @@ public class OsobaService : IOsobaService
         return id;
     }
 
-    public async Task<int> UpdateOsobaToUzytkownik(int id)
+    public async Task<int> UpdateOsobaToUzytkownik(int idOsoba, int idUzytkownik)
     {
-        var osoba = await _context.Osobas.FindAsync(id);
+        var osoba = await _context.Osobas.FindAsync(idOsoba);
 
         if (osoba == null)
         {
             return -1;
         }
 
-        osoba.IdUzytkownik = id;
+        osoba.IdUzytkownik = idUzytkownik;
         osoba.IdRola = 2;
 
         await _context.SaveChangesAsync();

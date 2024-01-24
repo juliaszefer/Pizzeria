@@ -9,5 +9,5 @@ public interface IOsobaService
     public Task<Osoba?> GetOsobaByEmailAsync(string email);
     public Task<int> AddNewOsoba(OsobaDto osobaDto);
     public Task<int> AddNewOsobaUzytkownik(OsobaDto osobaDto);
-    public Task<int> UpdateOsobaToUzytkownik(int id);
+    public Task<int> UpdateOsobaToUzytkownik(int idOsoba, int idUzytkownik);
 }

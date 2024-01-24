@@ -79,7 +79,7 @@ export default function Basket({basket, setBasket, english, setEnglish, user, se
 
     return (
         <div className={"homeContainer"}>
-            <NavBar english={english} setEnglish={setEnglish}/>
+            <NavBar english={english} setEnglish={setEnglish} user={user} setUser={setUser}/>
             <div className={"menuContainer"}>
                 <div className={"menuBox"}>
                     <div className={"food"}>

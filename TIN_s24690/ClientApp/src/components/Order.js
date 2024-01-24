@@ -61,7 +61,7 @@ export default function Order({basket, setBasket, english, setEnglish, setIdAdre
     
     return (
         <div className={"homeContainer"}>
-            <NavBar english={english} setEnglish={setEnglish}/>
+            <NavBar english={english} setEnglish={setEnglish} user={user} setUser={setUser}/>
             <div className={"menuContainer"}>
                 <div className={"menuBox"}>
                     <div className={"food"}>

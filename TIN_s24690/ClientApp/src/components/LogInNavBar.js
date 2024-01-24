@@ -2,9 +2,11 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import OrderDone from "./OrderDone";
 import Register from "./Register";
+import Order from "./Order";
+import {Link} from "react-router-dom";
+import AdresNavBar from "./AdresNavBar";
 
-export default function LogIn({english, basket, setBasket, idAdres, user, setUser}) {
-
+export default function LogInNavBar({english, setEnglish, basket, setBasket, user, setUser, idAdres, setIdAdres}){
     const [log, setLog] = useState("ZALOGUJ SIĘ");
     const [reg, setReg] = useState("ZAREJESTRUJ SIĘ");
     const [has, setHas] = useState("Hasło");
@@ -30,7 +32,7 @@ export default function LogIn({english, basket, setBasket, idAdres, user, setUse
             setGit("Zalogowano pomyślnie! Witaj, ");
             setHas("Hasło");
         }
-        
+
         if(user !== null){
             setUserLogged(false);
         }else{
@@ -82,7 +84,7 @@ export default function LogIn({english, basket, setBasket, idAdres, user, setUse
     };
 
     useEffect(() => {
-        if(user !== null && user !== undefined){
+        if(user !== null && user !== undefined) {
             if (user && user.idUzytkownik) {
                 axios.get(`/Osoba/idUzytkownik/${user.idUzytkownik}`)
                     .then(response => {
@@ -121,17 +123,13 @@ export default function LogIn({english, basket, setBasket, idAdres, user, setUse
                     )}
                     {user && <div>
                         <p>{git}{user.login}</p>
-                        <button onClick={handleOnClickOK}>OK</button>
+                        <button onClick={handleOnClickOK}><Link to={"/"}>OK</Link></button>
                     </div>}
                     <button onClick={handleOnLickRegister}>{reg}</button>
                 </div>
             )}
-            {orderShow && (
-                <OrderDone user={user} setUser={setUser} basket={basket} setBasket={setBasket} idOsoba={idOsoba} english={english}/>
-            )}
             {regShow && (
-                <Register english={english} basket={basket} setBasket={setBasket} idAdres={idAdres} user={user}
-                          setUser={setUser}/>
+                <AdresNavBar setIdAdres={setIdAdres} english={english} idAdres={idAdres} user={user} setUser={setUser} basket={basket} setBasket={setBasket} setEnglish={setEnglish}/>
             )}
         </div>
     );

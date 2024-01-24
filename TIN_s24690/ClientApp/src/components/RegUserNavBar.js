@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import OrderDone from "./OrderDone";
+import NewUser from "./NewUser";
 
-export default function RegUser({basket, setBasket, user, setUser, english, idOsoba}){
+export default function RegUserNavBar({basket, setBasket, user, setUser, english, idOsoba}){
     const [haslo, setHaslo] = useState("Hasło");
     const [log, setLog] = useState("ZAREJESTRUJ SIĘ");
     const [showRegUser, setShowRegUser] = useState(true);
     const [showOrderDone, setshowOrderDone] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [showError, setShowError] = useState(false);
-    
+
     useEffect(() => {
         if(english){
             setHaslo("Password");
@@ -19,7 +20,7 @@ export default function RegUser({basket, setBasket, user, setUser, english, idOs
             setLog("ZAREJESTRUJ SIĘ");
         }
     })
-    
+
     const [loginData, setLoginData] = useState({
         login: '',
         hasloHash: ''
@@ -39,7 +40,7 @@ export default function RegUser({basket, setBasket, user, setUser, english, idOs
         try {
             const response = await axios.post('/Uzytkownik', loginData);
             console.log(response);
-            
+
             axios.get(`/Uzytkownik/${loginData.login}/${loginData.hasloHash}`)
                 .then(response => {
                     setUser(response.data);
@@ -66,17 +67,6 @@ export default function RegUser({basket, setBasket, user, setUser, english, idOs
         }
     };
 
-    useEffect(() => {
-        if (user && user.idUzytkownik) {
-            try{
-                const resp = axios.put(`/Osoba/UpdateOsoba?idOsoba=${idOsoba}&idUzytkownik=${user.idUzytkownik}`);
-                console.log(resp);
-            }catch (error){
-                console.error('Wystąpił błąd podczas edycji danych', error);
-            }
-        }
-    }, [user]);
-
     return (
         <div>
             {showRegUser && (
@@ -100,7 +90,7 @@ export default function RegUser({basket, setBasket, user, setUser, english, idOs
                 </form>
             )}
             {showOrderDone && (
-                <OrderDone user={user} setUser={setUser} english={english} idOsoba={idOsoba} setBasket={setBasket} basket={basket}/>
+                <NewUser english={english} idOsoba={idOsoba} user={user}/>
             )}
         </div>
     );

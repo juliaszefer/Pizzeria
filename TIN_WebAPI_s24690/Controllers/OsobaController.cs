@@ -63,14 +63,14 @@ public class OsobaController : Controller
     }
 
     [HttpPut("UpdateOsoba")]
-    public async Task<IActionResult> UpdateOsoba(int id)
+    public async Task<IActionResult> UpdateOsoba(int idOsoba, int idUzytkownik)
     {
-        var idOs = await _osobaService.UpdateOsobaToUzytkownik(id);
+        var idOs = await _osobaService.UpdateOsobaToUzytkownik(idOsoba, idUzytkownik);
         if (idOs == -1)
         {
             return BadRequest("Podana osoba nie istnieje");
         }
 
-        return Ok(id);
+        return Ok(idOs);
     }
 }
